@@ -1,0 +1,10 @@
+.venv
+venv
+
+.env
+
+__pycache__
+
+.ruff_cache
+
+secret/
