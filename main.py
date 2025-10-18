@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from schemas import ExtractingData
+
 
 app = FastAPI()
 
@@ -19,5 +21,5 @@ async def health_checking():
 
 
 @app.post("/extract-images")
-async def extract_images():
+async def extract_images(data: ExtractingData):
     return "OK"
