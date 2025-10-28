@@ -9,12 +9,12 @@ async def get_image_content(image_link: str) -> bytes:
     async with httpx.AsyncClient() as client:
         resp = await client.get(image_link)
         return resp.content
-    
+
 
 async def save_file(content: bytes, file_path: str):
     async with aiofiles.open(file_path, "wb") as file:
         await file.write(content)
-    
+
 
 async def download_images(image_links: list[str], dates: str):
     logger.info("Check is the folder existing")

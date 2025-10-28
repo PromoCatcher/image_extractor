@@ -17,7 +17,7 @@ app.add_middleware(
 )
 
 
-@app.get("/healt-check")
+@app.get("/health-check")
 async def health_checking():
     return "Service healthy."
 
@@ -28,6 +28,8 @@ async def extract_images(data: ExtractingData):
         await download_images(data.links, data.dates)
         upload_images_to_gcs(data.dates, data.store)
     except Exception as e:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
-    
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
+
     return "OK"
